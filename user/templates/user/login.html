@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}
+    login
+{% endblock %}
+
+{% block content%}
+
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+        <div class="col-md-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Login</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary btn-block w-100" style="background-color: #fa8600">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

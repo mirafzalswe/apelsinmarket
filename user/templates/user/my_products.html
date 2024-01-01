@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+  <div  style="display:flex; flex-wrap: wrap" class="container pr">
+  {% if form %}
+  {% for i in form %}
+      <div class="card-products mt-5">
+        <div class="card-pr">
+            <div class="top-img">
+                <img src="{{ i.product_image.url }}" alt="Product Image">
+            </div>
+            <div class="card-body">
+                <div  class="title-pr">
+                    <h5>{{ i.title }}</h5>
+                    <h5 class="price">{{ i.price }} SO'M</h5>
+                </div>
+                <div class="content-pr">
+                    <p>{{ i.product_info }}</p>
+                </div>
+            </div>
+        </div>
+        </div>
+{% endfor %}
+  {% else %}
+  <h1 class="mt-5" style="text-align: center; width: 100%"> You don't have any products </h1>
+  {% endif %}
+  </div>
+{% endblock content %}

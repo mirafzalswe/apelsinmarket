@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    prifile
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+    <div class="top-side">
+        <div class="right-top">
+            <div class="photo">
+                <img src="{{ customer.avatar.url }}" alt="profile-image">
+            </div>
+            <div class="author">
+                <h3>@{{ user }}</h3>
+            </div>
+        </div>
+        <div class="left-top">
+            <div class="title"><h1>{{ user.username }}</h1></div>
+            <div class="about-market">
+                <p>{{ customer.about }} </p>
+            </div>
+            <div class="buttons">
+                <form action="{% url 'logout-page' %}" method="POST">
+                    {% csrf_token %}
+                    <button  type="submit" class="btn btn-danger">Logout</button>
+                </form>
+                <a href="{% url 'setting-page' %}" type="submit" class="btn btn-secondary">Update</a>
+                <a  href="{% url 'my-product-page' %}" type="button" class="btn btn-info">My products</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+{#    {{ user }}#}
+{#    <form action="{% url 'logout-page' %}" method="POST">#}
+{#        {% csrf_token %}#}
+{#        <button type="submit">Logout</button>#}
+{#    </form>#}
+
+
+{% endblock content %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+<div class="product container mt-5">
+    {% for i in products %}
+        <div class="card-product">
+            <div class="image-product">
+                <img src="{{ i.product_image.url }}" alt="product-image">
+            </div>
+            <div class="content-pr">
+                <div class="title">
+                    <h4><a href="{% url 'detail-page' i.id %}">{{ i.title }}</a></h4>
+                </div>
+                <div class="about">
+                    <p>{{ i.product_info }}</p>
+                </div>
+                <div class="price">
+                    <b>{{ i.price }} som</b>
+                </div>
+                <div class="time">
+                    <p>{{ i.date }}</p>
+                    <p class="author-decor">@{{ i.author }} <i class="fa-solid fa-basket-shopping"></i></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    <style>
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card-product {
+    width: 25%;
+    height: 550px;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.card-product:hover{
+        box-shadow: 3px 5px 8px orangered;
+
+}
+
+.image-product img {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.content-pr {
+    padding: 15px;
+}
+
+.title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.about p {
+    font-size: 14px;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.price {
+    color: #ff5722;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    color: #999;
+    font-size: 12px;
+}
+
+.author-decor {
+    display: flex;
+    align-items: center;
+}
+
+.fa-basket-shopping {
+    margin-left: 5px;
+}
+
+    </style>
+{% endblock %}

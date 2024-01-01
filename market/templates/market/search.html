@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title  %}
+    Search
+{% endblock title %}
+
+{% block content %}
+<body>
+    <h1>Search Results</h1>
+    <form method="GET" action="{% url 'search-page' %}">
+        <input type="text" name="q" value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for product in results %}
+            <li>{{ product.title }}</li>
+            <li>{{ product.product_info }}</li>
+        {% empty %}
+            <li>No results found</li>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock content %}

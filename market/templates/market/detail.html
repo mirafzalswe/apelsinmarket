@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+    DeTaiL
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5 " style="width: 18rem; height: 300px">
+    <div class="card shadow" style="width: 18rem;">
+        <img src="{{ products.product_image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="card-title">{{ products.title }}</h3>
+            <h5 class="card-title">{{ products.price }}</h5>
+            <p class="card-text">{{ products.product_info}}</p>
+            <p class="post-card-ifno">
+                <span class="post-card-author">@{{ products.author }} |</span>
+                <span class="post-card-author">{{ products.data|date:"l G:i" }} </span>
+                {% if object.author == user %}
+                    <div class="container text-center">
+                        <a class="btn btn-outline-danger btn-block" href="{% url 'delete-product' object.id %}" data-width="">Delete</a>
+                        <a class="btn btn-outline-secondary btn-block" href="{% url 'update-product' object.id %}">Update</a>
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
